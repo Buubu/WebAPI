@@ -1,22 +1,22 @@
 HotelDB
 *******
-ok			public static List<Hotel> GetAllHotels(){}
-ok			public static List<Hotel> GetAllHotelsSimple(string location){}
-BLL			public static List<Hotel> GetAllHotelsAdvanced(string location, int category, Boolean hasWifi, Boolean hasParking){}
-ok			public static Hotel GetHotel(int idHotel){}
+GetHotels() from HotelsController					public static List<Hotel> GetAllHotels(){}
+GetHotelsSimple(string location) from HotelsController			public static List<Hotel> GetAllHotelsSimple(string location){}
+BLL on GetHotelsSimple(string location) from HotelsController		public static List<Hotel> GetAllHotelsAdvanced(string location, int category, Boolean hasWifi, Boolean hasParking){}
+GetHotels(int id) from HotelsController	*not working*				public static Hotel GetHotel(int idHotel){}
 
 RoomDB
 ******
-use 			public static List<Room> GetAllRooms(int idHotel){}
+GetRoomsFromHotel(int id) from HotelsController			public static List<Room> GetAllRooms(int idHotel){}
         public static List<Room> GetSearchedRoomsSimple(int idHotel, DateTime dateStart, DateTime dateEnd){}
         public static List<Room> GetSearchedRoomsAdvanced(int idHotel, DateTime dateStart, DateTime dateEnd, Boolean hasTV, Boolean hasHairDryer){}
-        public static Room GetRoom(int idRoom){}
+GetRoom(int id) from RoomsController			        public static Room GetRoom(int idRoom){}
         public static List<Room> GetOccupiedRooms(int idHotel, DateTime dateStart, DateTime dateEnd){}\
 
 PictureDB
 *********
-        public static List<Picture> GetAllPictures(int idHotel){}
-        public static List<Picture> GetRoomPictures(int idRoom){}
+usefull??       				 public static List<Picture> GetAllPictures(int idHotel){}
+GetRoom(int id) from RoomsController      	 public static List<Picture> GetRoomPictures(int idRoom){}
 
 
 ReservationDB
