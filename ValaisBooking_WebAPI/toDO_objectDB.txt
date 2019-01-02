@@ -1,8 +1,8 @@
 HotelDB
 *******
 ok        public static List<Hotel> GetAllHotels(){}
-        public static List<Hotel> GetAllHotelsSimple(string location){}
-        public static List<Hotel> GetAllHotelsAdvanced(string location, int category, Boolean hasWifi, Boolean hasParking){}
+ok        public static List<Hotel> GetAllHotelsSimple(string location){}
+BLL        public static List<Hotel> GetAllHotelsAdvanced(string location, int category, Boolean hasWifi, Boolean hasParking){}
 ok        public static Hotel GetHotel(int idHotel){}
 
 RoomDB
