@@ -13,7 +13,7 @@
 *.userprefs
 
 # configuration file (added by Gbz)
-web.conf
+Web.conf
 
 # Build results
 [Dd]ebug/
