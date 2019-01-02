@@ -7,14 +7,14 @@
       <Diagram DiagramId="41e3173eb3694e0d91a6732d91eabb67" Name="Diagram1">
         <EntityTypeShape EntityType="ValaisBookingModel.Hotel" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ValaisBookingModel.Picture" Width="1.5" PointX="5.625" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="ValaisBookingModel.Reservation" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ValaisBookingModel.ReservationDetail" Width="2.25" PointX="5.5" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ValaisBookingModel.Room" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
         <AssociationConnector Association="ValaisBookingModel.FK_Room_Hotel" ManuallyRouted="false" />
         <AssociationConnector Association="ValaisBookingModel.FK_Picture_Room" ManuallyRouted="false" />
-        <AssociationConnector Association="ValaisBookingModel.FK_Reservation_Room" ManuallyRouted="false" />
-        <AssociationConnector Association="ValaisBookingModel.FK_ReservationD_Reserv" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="ValaisBookingModel.Reservation" Width="1.5" PointX="7.5" PointY="6.375" />
+        <EntityTypeShape EntityType="ValaisBookingModel.ReservationDetail" Width="1.5" PointX="5.25" PointY="6.625" />
+        <AssociationConnector Association="ValaisBookingModel.FK_Reservation_ReservD" />
+        <AssociationConnector Association="ValaisBookingModel.FK_ReservationD_Room" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

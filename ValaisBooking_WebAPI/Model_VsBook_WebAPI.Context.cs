@@ -27,8 +27,8 @@ namespace ValaisBooking_WebAPI
     
         public virtual DbSet<Hotel> Hotels { get; set; }
         public virtual DbSet<Picture> Pictures { get; set; }
+        public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
         public virtual DbSet<ReservationDetail> ReservationDetails { get; set; }
-        public virtual DbSet<Room> Rooms { get; set; }
     }
 }

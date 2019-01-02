@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ValaisBookingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ValaisBookingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Hotel">
           <Key>
             <PropertyRef Name="IdHotel" />
@@ -33,6 +33,7 @@
             <PropertyRef Name="IdReservation" />
           </Key>
           <Property Name="IdReservation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdReservationDetails" Type="int" Nullable="false" />
           <Property Name="DateReservation" Type="date" Nullable="false" />
           <Property Name="ClientFirstname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ClientLastname" Type="varchar" MaxLength="50" Nullable="false" />
@@ -76,27 +77,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Reservation_Room">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+        <Association Name="FK_Reservation_ReservD">
+          <End Role="ReservationDetails" Type="Self.ReservationDetails" Multiplicity="1" />
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReservationDetails">
+              <PropertyRef Name="IdReservationDetails" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="IdReservationDetails" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservationD_Room">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="ReservationDetails" Type="Self.ReservationDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
               <PropertyRef Name="IdRoom" />
             </Principal>
-            <Dependent Role="Reservation">
-              <PropertyRef Name="IdRoom" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReservationD_Reserv">
-          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
-          <End Role="ReservationDetails" Type="Self.ReservationDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Reservation">
-              <PropertyRef Name="IdReservation" />
-            </Principal>
             <Dependent Role="ReservationDetails">
-              <PropertyRef Name="IdReservation" />
+              <PropertyRef Name="IdRoom" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -122,12 +123,12 @@
             <End Role="Room" EntitySet="Room" />
             <End Role="Picture" EntitySet="Picture" />
           </AssociationSet>
-          <AssociationSet Name="FK_Reservation_Room" Association="Self.FK_Reservation_Room">
-            <End Role="Room" EntitySet="Room" />
+          <AssociationSet Name="FK_Reservation_ReservD" Association="Self.FK_Reservation_ReservD">
+            <End Role="ReservationDetails" EntitySet="ReservationDetails" />
             <End Role="Reservation" EntitySet="Reservation" />
           </AssociationSet>
-          <AssociationSet Name="FK_ReservationD_Reserv" Association="Self.FK_ReservationD_Reserv">
-            <End Role="Reservation" EntitySet="Reservation" />
+          <AssociationSet Name="FK_ReservationD_Room" Association="Self.FK_ReservationD_Room">
+            <End Role="Room" EntitySet="Room" />
             <End Role="ReservationDetails" EntitySet="ReservationDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_Room_Hotel" Association="Self.FK_Room_Hotel">
@@ -135,8 +136,7 @@
             <End Role="Room" EntitySet="Room" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ValaisBookingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -165,32 +165,6 @@
           <Property Name="IdRoom" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Room" Relationship="Self.FK_Picture_Room" FromRole="Picture" ToRole="Room" />
         </EntityType>
-        <EntityType Name="Reservation">
-          <Key>
-            <PropertyRef Name="IdReservation" />
-          </Key>
-          <Property Name="IdReservation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateReservation" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ClientFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ClientLastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="TotalPrice" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
-          <Property Name="IdRoom" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Room" Relationship="Self.FK_Reservation_Room" FromRole="Reservation" ToRole="Room" />
-          <NavigationProperty Name="ReservationDetails" Relationship="Self.FK_ReservationD_Reserv" FromRole="Reservation" ToRole="ReservationDetails" />
-        </EntityType>
-        <EntityType Name="ReservationDetail">
-          <Key>
-            <PropertyRef Name="IdReservationDetails" />
-          </Key>
-          <Property Name="IdReservationDetails" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdReservation" Type="Int32" Nullable="false" />
-          <Property Name="IdRoom" Type="Int32" Nullable="false" />
-          <Property Name="RoomPrice" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
-          <Property Name="Increase" Type="Decimal" Precision="5" Scale="2" />
-          <NavigationProperty Name="Reservation" Relationship="Self.FK_ReservationD_Reserv" FromRole="ReservationDetails" ToRole="Reservation" />
-        </EntityType>
         <EntityType Name="Room">
           <Key>
             <PropertyRef Name="IdRoom" />
@@ -205,7 +179,7 @@
           <Property Name="IdHotel" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Hotel" Relationship="Self.FK_Room_Hotel" FromRole="Room" ToRole="Hotel" />
           <NavigationProperty Name="Pictures" Relationship="Self.FK_Picture_Room" FromRole="Room" ToRole="Picture" />
-          <NavigationProperty Name="Reservations" Relationship="Self.FK_Reservation_Room" FromRole="Room" ToRole="Reservation" />
+          <NavigationProperty Name="ReservationDetails" Relationship="ValaisBookingModel.FK_ReservationD_Room" FromRole="Room" ToRole="ReservationDetail" />
         </EntityType>
         <Association Name="FK_Room_Hotel">
           <End Role="Hotel" Type="Self.Hotel" Multiplicity="1" />
@@ -231,35 +205,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Reservation_Room">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
-          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="IdRoom" />
-            </Principal>
-            <Dependent Role="Reservation">
-              <PropertyRef Name="IdRoom" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReservationD_Reserv">
-          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
-          <End Role="ReservationDetails" Type="Self.ReservationDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Reservation">
-              <PropertyRef Name="IdReservation" />
-            </Principal>
-            <Dependent Role="ReservationDetails">
-              <PropertyRef Name="IdReservation" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ValaisBookingEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Hotels" EntityType="Self.Hotel" />
           <EntitySet Name="Pictures" EntityType="Self.Picture" />
-          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
-          <EntitySet Name="ReservationDetails" EntityType="Self.ReservationDetail" />
           <EntitySet Name="Rooms" EntityType="Self.Room" />
           <AssociationSet Name="FK_Room_Hotel" Association="Self.FK_Room_Hotel">
             <End Role="Hotel" EntitySet="Hotels" />
@@ -269,16 +217,69 @@
             <End Role="Room" EntitySet="Rooms" />
             <End Role="Picture" EntitySet="Pictures" />
           </AssociationSet>
-          <AssociationSet Name="FK_Reservation_Room" Association="Self.FK_Reservation_Room">
+          <EntitySet Name="Reservations" EntityType="ValaisBookingModel.Reservation" />
+          <EntitySet Name="ReservationDetails" EntityType="ValaisBookingModel.ReservationDetail" />
+          <AssociationSet Name="FK_Reservation_ReservD" Association="ValaisBookingModel.FK_Reservation_ReservD">
+            <End Role="ReservationDetail" EntitySet="ReservationDetails" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservationD_Room" Association="ValaisBookingModel.FK_ReservationD_Room">
             <End Role="Room" EntitySet="Rooms" />
-            <End Role="Reservation" EntitySet="Reservations" />
+            <End Role="ReservationDetail" EntitySet="ReservationDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK_ReservationD_Reserv" Association="Self.FK_ReservationD_Reserv">
-            <End Role="Reservation" EntitySet="Reservations" />
-            <End Role="ReservationDetails" EntitySet="ReservationDetails" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+          </EntityContainer>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="IdReservation" />
+          </Key>
+          <Property Name="IdReservation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdReservationDetails" Type="Int32" Nullable="false" />
+          <Property Name="DateReservation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ClientFirstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ClientLastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="IdRoom" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ReservationDetail" Relationship="ValaisBookingModel.FK_Reservation_ReservD" FromRole="Reservation" ToRole="ReservationDetail" />
+        </EntityType>
+        <EntityType Name="ReservationDetail">
+          <Key>
+            <PropertyRef Name="IdReservationDetails" />
+          </Key>
+          <Property Name="IdReservationDetails" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdReservation" Type="Int32" Nullable="false" />
+          <Property Name="IdRoom" Type="Int32" Nullable="false" />
+          <Property Name="RoomPrice" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="Increase" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="Reservations" Relationship="ValaisBookingModel.FK_Reservation_ReservD" FromRole="ReservationDetail" ToRole="Reservation" />
+          <NavigationProperty Name="Room" Relationship="ValaisBookingModel.FK_ReservationD_Room" FromRole="ReservationDetail" ToRole="Room" />
+        </EntityType>
+        <Association Name="FK_Reservation_ReservD">
+          <End Type="ValaisBookingModel.ReservationDetail" Role="ReservationDetail" Multiplicity="1" />
+          <End Type="ValaisBookingModel.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReservationDetail">
+              <PropertyRef Name="IdReservationDetails" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="IdReservationDetails" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservationD_Room">
+          <End Type="ValaisBookingModel.Room" Role="Room" Multiplicity="1" />
+          <End Type="ValaisBookingModel.ReservationDetail" Role="ReservationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="IdRoom" />
+            </Principal>
+            <Dependent Role="ReservationDetail">
+              <PropertyRef Name="IdRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -309,31 +310,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Reservations">
-            <EntityTypeMapping TypeName="ValaisBookingModel.Reservation">
-              <MappingFragment StoreEntitySet="Reservation">
-                <ScalarProperty Name="IdReservation" ColumnName="IdReservation" />
-                <ScalarProperty Name="DateReservation" ColumnName="DateReservation" />
-                <ScalarProperty Name="ClientFirstname" ColumnName="ClientFirstname" />
-                <ScalarProperty Name="ClientLastname" ColumnName="ClientLastname" />
-                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
-                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ReservationDetails">
-            <EntityTypeMapping TypeName="ValaisBookingModel.ReservationDetail">
-              <MappingFragment StoreEntitySet="ReservationDetails">
-                <ScalarProperty Name="IdReservationDetails" ColumnName="IdReservationDetails" />
-                <ScalarProperty Name="IdReservation" ColumnName="IdReservation" />
-                <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
-                <ScalarProperty Name="RoomPrice" ColumnName="RoomPrice" />
-                <ScalarProperty Name="Increase" ColumnName="Increase" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Rooms">
             <EntityTypeMapping TypeName="ValaisBookingModel.Room">
               <MappingFragment StoreEntitySet="Room">
@@ -345,6 +321,32 @@
                 <ScalarProperty Name="HasTV" ColumnName="HasTV" />
                 <ScalarProperty Name="HasHairDryer" ColumnName="HasHairDryer" />
                 <ScalarProperty Name="IdHotel" ColumnName="IdHotel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="ValaisBookingModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="ClientLastname" ColumnName="ClientLastname" />
+                <ScalarProperty Name="ClientFirstname" ColumnName="ClientFirstname" />
+                <ScalarProperty Name="DateReservation" ColumnName="DateReservation" />
+                <ScalarProperty Name="IdReservationDetails" ColumnName="IdReservationDetails" />
+                <ScalarProperty Name="IdReservation" ColumnName="IdReservation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReservationDetails">
+            <EntityTypeMapping TypeName="ValaisBookingModel.ReservationDetail">
+              <MappingFragment StoreEntitySet="ReservationDetails">
+                <ScalarProperty Name="Increase" ColumnName="Increase" />
+                <ScalarProperty Name="RoomPrice" ColumnName="RoomPrice" />
+                <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
+                <ScalarProperty Name="IdReservation" ColumnName="IdReservation" />
+                <ScalarProperty Name="IdReservationDetails" ColumnName="IdReservationDetails" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

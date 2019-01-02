@@ -18,7 +18,7 @@ namespace ValaisBooking_WebAPI
         public Room()
         {
             this.Pictures = new HashSet<Picture>();
-            this.Reservations = new HashSet<Reservation>();
+            this.ReservationDetails = new HashSet<ReservationDetail>();
         }
     
         public int IdRoom { get; set; }
@@ -34,6 +34,6 @@ namespace ValaisBooking_WebAPI
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Picture> Pictures { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual ICollection<ReservationDetail> ReservationDetails { get; set; }
     }
 }

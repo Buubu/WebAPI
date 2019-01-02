@@ -37,6 +37,7 @@ namespace ValaisBooking_WebAPI.Models
 
 		// GET: api/Hotels/sion
 		[ResponseType(typeof(Hotel))]
+		[Route ("api/Hotels/{location}")]
 		public IList<Hotel> GetHotelsByLocation(string location)
 		{
 			var hotels = db.Hotels.Where(h=>h.Location == location).ToList();
