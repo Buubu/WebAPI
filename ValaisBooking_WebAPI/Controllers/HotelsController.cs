@@ -24,7 +24,8 @@ namespace ValaisBooking_WebAPI.Models
 
         // GET: api/Hotels/5
         [ResponseType(typeof(Hotel))]
-        public IHttpActionResult GetHotel(int id)
+		[Route("api/Hotels/{id}")]
+		public IHttpActionResult GetHotel(int id)
         {
             Hotel hotel = db.Hotels.Find(id);
             if (hotel == null)
@@ -35,10 +36,24 @@ namespace ValaisBooking_WebAPI.Models
             return Ok(hotel);
         }
 
+		// GET: api/Hotels/5/Rooms
+		[ResponseType(typeof(Hotel))]
+		[Route("api/Hotel/{id}/Rooms")]
+		public IHttpActionResult GetRoomsFromHotel(int id)
+		{
+			Hotel hotel = db.Hotels.Where(h => h.IdHotel == id).Include(h => h.Rooms).FirstOrDefault();
+			if (hotel == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(hotel);
+		}
+
 		// GET: api/Hotels/sion
 		[ResponseType(typeof(Hotel))]
 		[Route ("api/Hotels/{location}")]
-		public IList<Hotel> GetHotelsByLocation(string location)
+		public IList<Hotel> GetHotelsSimple(string location)
 		{
 			var hotels = db.Hotels.Where(h=>h.Location == location).ToList();
 			return hotels;

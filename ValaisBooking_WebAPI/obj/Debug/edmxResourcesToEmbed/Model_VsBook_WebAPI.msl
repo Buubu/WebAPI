@@ -26,31 +26,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Reservations">
-      <EntityTypeMapping TypeName="ValaisBookingModel.Reservation">
-        <MappingFragment StoreEntitySet="Reservation">
-          <ScalarProperty Name="IdReservation" ColumnName="IdReservation" />
-          <ScalarProperty Name="DateReservation" ColumnName="DateReservation" />
-          <ScalarProperty Name="ClientFirstname" ColumnName="ClientFirstname" />
-          <ScalarProperty Name="ClientLastname" ColumnName="ClientLastname" />
-          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
-          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
-          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-          <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ReservationDetails">
-      <EntityTypeMapping TypeName="ValaisBookingModel.ReservationDetail">
-        <MappingFragment StoreEntitySet="ReservationDetails">
-          <ScalarProperty Name="IdReservationDetails" ColumnName="IdReservationDetails" />
-          <ScalarProperty Name="IdReservation" ColumnName="IdReservation" />
-          <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
-          <ScalarProperty Name="RoomPrice" ColumnName="RoomPrice" />
-          <ScalarProperty Name="Increase" ColumnName="Increase" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Rooms">
       <EntityTypeMapping TypeName="ValaisBookingModel.Room">
         <MappingFragment StoreEntitySet="Room">
@@ -62,6 +37,32 @@
           <ScalarProperty Name="HasTV" ColumnName="HasTV" />
           <ScalarProperty Name="HasHairDryer" ColumnName="HasHairDryer" />
           <ScalarProperty Name="IdHotel" ColumnName="IdHotel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="ValaisBookingModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservation">
+          <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+          <ScalarProperty Name="ClientLastname" ColumnName="ClientLastname" />
+          <ScalarProperty Name="ClientFirstname" ColumnName="ClientFirstname" />
+          <ScalarProperty Name="DateReservation" ColumnName="DateReservation" />
+          <ScalarProperty Name="IdReservationDetails" ColumnName="IdReservationDetails" />
+          <ScalarProperty Name="IdReservation" ColumnName="IdReservation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReservationDetails">
+      <EntityTypeMapping TypeName="ValaisBookingModel.ReservationDetail">
+        <MappingFragment StoreEntitySet="ReservationDetails">
+          <ScalarProperty Name="Increase" ColumnName="Increase" />
+          <ScalarProperty Name="RoomPrice" ColumnName="RoomPrice" />
+          <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
+          <ScalarProperty Name="IdReservation" ColumnName="IdReservation" />
+          <ScalarProperty Name="IdReservationDetails" ColumnName="IdReservationDetails" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

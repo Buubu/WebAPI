@@ -30,10 +30,10 @@ namespace ValaisBooking_WebAPI
         public bool HasHairDryer { get; set; }
         public int IdHotel { get; set; }
     
-        public virtual Hotel Hotel { get; set; }
+        public Hotel Hotel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Picture> Pictures { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReservationDetail> ReservationDetails { get; set; }
+        public ICollection<ReservationDetail> ReservationDetails { get; set; }
     }
 }

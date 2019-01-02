@@ -32,6 +32,6 @@ namespace ValaisBooking_WebAPI
         public string Website { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Room> Rooms { get; set; }
+        public ICollection<Room> Rooms { get; set; }
     }
 }
