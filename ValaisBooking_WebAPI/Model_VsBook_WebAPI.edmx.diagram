@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="41e3173eb3694e0d91a6732d91eabb67" Name="Diagram1">
+        <EntityTypeShape EntityType="ValaisBookingModel.Hotel" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValaisBookingModel.Picture" Width="1.5" PointX="5.625" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValaisBookingModel.Reservation" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValaisBookingModel.ReservationDetail" Width="1.5" PointX="5.625" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValaisBookingModel.Room" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="ValaisBookingModel.FK_Room_Hotel" ManuallyRouted="false" />
+        <AssociationConnector Association="ValaisBookingModel.FK_Picture_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="ValaisBookingModel.FK_Reservation_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="ValaisBookingModel.FK_ReservationD_Reserv" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
