@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\uadmin\source\repos\ValaisBooking_WebAPI\ValaisBooking_WebAPI\Model_VsBook_WebAPI.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\uadmin\source\repos\WebAPI\ValaisBooking_WebAPI\Model_VsBook_WebAPI.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

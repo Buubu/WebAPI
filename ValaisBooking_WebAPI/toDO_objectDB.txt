@@ -1,0 +1,32 @@
+HotelDB
+*******
+ok        public static List<Hotel> GetAllHotels(){}
+        public static List<Hotel> GetAllHotelsSimple(string location){}
+        public static List<Hotel> GetAllHotelsAdvanced(string location, int category, Boolean hasWifi, Boolean hasParking){}
+ok        public static Hotel GetHotel(int idHotel){}
+
+RoomDB
+******
+        public static List<Room> GetAllRooms(int idHotel){}
+        public static List<Room> GetSearchedRoomsSimple(int idHotel, DateTime dateStart, DateTime dateEnd){}
+        public static List<Room> GetSearchedRoomsAdvanced(int idHotel, DateTime dateStart, DateTime dateEnd, Boolean hasTV, Boolean hasHairDryer){}
+        public static Room GetRoom(int idRoom){}
+        public static List<Room> GetOccupiedRooms(int idHotel, DateTime dateStart, DateTime dateEnd){}\
+
+PictureDB
+*********
+        public static List<Picture> GetAllPictures(int idHotel){}
+        public static List<Picture> GetRoomPictures(int idRoom){}
+
+
+ReservationDB
+*************
+        public static int AddReservation(DateTime dateReservation, string clientFirstname, string clientLastname, DateTime dateStart, DateTime dateEnd, decimal totalPrice){}
+        public static Boolean LoginReservation(int idReservation, string firstname, string lastname){}
+        public static void RemoveReservation(int idReservation){}
+
+
+ReservationDetailsDB
+*******************
+        public static void AddReservationDetails(int idReservation, int idRoom, decimal roomPrice, decimal increase){}
+        public static void RemoveReservationDetails(int idReservation){}

@@ -99,6 +99,7 @@
       <DependentUpon>Model_VsBook_WebAPI.edmx</DependentUpon>
       <LastGenOutput>Model_VsBook_WebAPI.cs</LastGenOutput>
     </Content>
+    <Content Include="toDO_objectDB.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

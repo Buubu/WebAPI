@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="ValaisBookingModel.Hotel" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ValaisBookingModel.Picture" Width="1.5" PointX="5.625" PointY="3" IsExpanded="true" />
         <EntityTypeShape EntityType="ValaisBookingModel.Reservation" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ValaisBookingModel.ReservationDetail" Width="1.5" PointX="5.625" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValaisBookingModel.ReservationDetail" Width="2.25" PointX="5.5" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ValaisBookingModel.Room" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
         <AssociationConnector Association="ValaisBookingModel.FK_Room_Hotel" ManuallyRouted="false" />
         <AssociationConnector Association="ValaisBookingModel.FK_Picture_Room" ManuallyRouted="false" />
