@@ -1,22 +1,22 @@
 HotelDB
 *******
-GetHotels() from HotelsController					public static List<Hotel> GetAllHotels(){}
-GetHotelsSimple(string location) from HotelsController			public static List<Hotel> GetAllHotelsSimple(string location){}
+GetHotels() from HotelsController									public static List<Hotel> GetAllHotels(){}
+GetHotelsSimple(string location) from HotelsController				public static List<Hotel> GetAllHotelsSimple(string location){}
 BLL on GetHotelsSimple(string location) from HotelsController		public static List<Hotel> GetAllHotelsAdvanced(string location, int category, Boolean hasWifi, Boolean hasParking){}
 GetHotels(int id) from HotelsController	*not working*				public static Hotel GetHotel(int idHotel){}
 
 RoomDB
 ******
-GetRoomsFromHotel(int id) from HotelsController			public static List<Room> GetAllRooms(int idHotel){}
-        public static List<Room> GetSearchedRoomsSimple(int idHotel, DateTime dateStart, DateTime dateEnd){}
-        public static List<Room> GetSearchedRoomsAdvanced(int idHotel, DateTime dateStart, DateTime dateEnd, Boolean hasTV, Boolean hasHairDryer){}
-GetRoom(int id) from RoomsController			        public static Room GetRoom(int idRoom){}
-        public static List<Room> GetOccupiedRooms(int idHotel, DateTime dateStart, DateTime dateEnd){}\
+GetRoomsFromHotel(int id) from HotelsController												public static List<Room> GetAllRooms(int idHotel){}
+GetRoom(int id) from RoomsController														public static Room GetRoom(int idRoom){}
+GetSearchedRoomsSimple(int idHotel, DateTime din, DateTime dout) from RoomsController		public static List<Room> GetSearchedRoomsSimple(int idHotel, DateTime dateStart, DateTime dateEnd){}
+BLL on the previous method GetSearchedRoomsSimple(...)										public static List<Room> GetSearchedRoomsAdvanced(int idHotel, DateTime dateStart, DateTime dateEnd, Boolean hasTV, Boolean hasHairDryer){}
+GetOccupiedRooms(int idHotel, DateTime din, DateTime dout) from RoomsController		        public static List<Room> GetOccupiedRooms(int idHotel, DateTime dateStart, DateTime dateEnd){}\
 
 PictureDB
 *********
-usefull??       				 public static List<Picture> GetAllPictures(int idHotel){}
-GetRoom(int id) from RoomsController      	 public static List<Picture> GetRoomPictures(int idRoom){}
+usefull??       													 public static List<Picture> GetAllPictures(int idHotel){}
+GetRoom(int id) from RoomsController, EF gets all pics				 public static List<Picture> GetRoomPictures(int idRoom){}
 
 
 ReservationDB

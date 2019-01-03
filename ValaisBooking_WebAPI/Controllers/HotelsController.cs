@@ -22,26 +22,12 @@ namespace ValaisBooking_WebAPI.Models
             return db.Hotels;
         }
 
-        // GET: api/Hotels/5
+		//GET: api/Hotels/5
         [ResponseType(typeof(Hotel))]
-		[Route("api/Hotels/{id}")]
+		[Route("api/Hotel/{id}")]
 		public IHttpActionResult GetHotel(int id)
-        {
-            Hotel hotel = db.Hotels.Find(id);
-            if (hotel == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(hotel);
-        }
-
-		// GET: api/Hotels/5/Rooms
-		[ResponseType(typeof(Hotel))]
-		[Route("api/Hotel/{id}/Rooms")]
-		public IHttpActionResult GetRoomsFromHotel(int id)
 		{
-			Hotel hotel = db.Hotels.Where(h => h.IdHotel == id).Include(h => h.Rooms).FirstOrDefault();
+			Hotel hotel = db.Hotels.Find(id);
 			if (hotel == null)
 			{
 				return NotFound();
@@ -50,18 +36,36 @@ namespace ValaisBooking_WebAPI.Models
 			return Ok(hotel);
 		}
 
+		//// GET: api/Hotels/5/Rooms
+		//[ResponseType(typeof(Hotel))]
+		//[Route("api/Hotel/{id}/Rooms")]
+		//public IHttpActionResult GetRoomsFromHotel(int id)
+		//{
+		//	Hotel hotel = db.Hotels.Where(h => h.IdHotel == id).Include(h => h.Rooms).FirstOrDefault();
+		//	if (hotel == null)
+		//	{
+		//		return NotFound();
+		//	}
+
+		//	return Ok(hotel);
+		//}
+
 		// GET: api/Hotels/sion
 		[ResponseType(typeof(Hotel))]
-		[Route ("api/Hotels/{location}")]
-		public IList<Hotel> GetHotelsSimple(string location)
+		[Route("api/Hotels/locality/{location}")]
+		public IHttpActionResult GetHotelsSimple(string location)
 		{
-			var hotels = db.Hotels.Where(h=>h.Location == location).ToList();
-			return hotels;
+			var hotels = db.Hotels.Where(h => h.Location == location).ToList();
+			if (hotels == null)
+			{
+				return NotFound();
+			}
+			return Ok(hotels);
 		}
 
 		// PUT: api/Hotels/5
 		[ResponseType(typeof(void))]
-        public IHttpActionResult PutHotel(int id, Hotel hotel)
+        private IHttpActionResult PutHotel(int id, Hotel hotel)
         {
             if (!ModelState.IsValid)
             {
@@ -96,7 +100,7 @@ namespace ValaisBooking_WebAPI.Models
 
         // POST: api/Hotels
         [ResponseType(typeof(Hotel))]
-        public IHttpActionResult PostHotel(Hotel hotel)
+        private IHttpActionResult PostHotel(Hotel hotel)
         {
             if (!ModelState.IsValid)
             {
@@ -126,7 +130,7 @@ namespace ValaisBooking_WebAPI.Models
 
         // DELETE: api/Hotels/5
         [ResponseType(typeof(Hotel))]
-        public IHttpActionResult DeleteHotel(int id)
+        private IHttpActionResult DeleteHotel(int id)
         {
             Hotel hotel = db.Hotels.Find(id);
             if (hotel == null)

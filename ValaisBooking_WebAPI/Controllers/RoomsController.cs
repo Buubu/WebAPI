@@ -12,35 +12,83 @@ using ValaisBooking_WebAPI;
 
 namespace ValaisBooking_WebAPI.Models
 {
-    public class RoomsController : ApiController
-    {
-        private ValaisBookingEntities1 db = new ValaisBookingEntities1();
+	public class RoomsController : ApiController
+	{
+		private ValaisBookingEntities1 db = new ValaisBookingEntities1();
 
-        // GET: api/Rooms
-        public IQueryable<Room> GetRooms()
-        {
-            return db.Rooms;
-        }
+		// GET: api/Rooms
+		public IQueryable<Room> GetRooms()
+		{
+			return db.Rooms;
+		}
 
-        // GET: api/Rooms/5
-        [ResponseType(typeof(Room))]
-        public IHttpActionResult GetRoom(int id)
-        {
-            Room room = db.Rooms.Find(id);
-            if (room == null)
-            {
-                return NotFound();
-            }
+		// GET: api/Rooms/5
+		[ResponseType(typeof(Room))]
+		public IHttpActionResult GetRoom(int id)
+		{
+			Room room = db.Rooms.Find(id);
+			if (room == null)
+			{
+				return NotFound();
+			}
 
-            return Ok(room);
-        }
+			return Ok(room);
+		}
 
-		// GET: api/Rooms/Hotel/5
+		// GET: api/Hotel/5/Rooms
 		[Route("api/Hotel/{IdHotel}/Rooms")]
 		[ResponseType(typeof(Room))]
 		public IList<Room> GetRoomsByHotel(int idHotel)
 		{
 			var rooms = db.Rooms.Where(h => h.IdHotel == idHotel).ToList();
+			return rooms;
+		}
+
+		// GET: api/Hotel/5/Availability
+		// date format "yyyy-mm-dd"
+		[Route("api/Hotel/{IdHotel}/Availability/{din}/{dout}")]
+		[ResponseType(typeof(Room))]
+		public IEnumerable<Room> GetSearchedRoomsSimple(int idHotel, DateTime din, DateTime dout)
+		{
+			var subselect = from r in db.Rooms
+							join resd in db.ReservationDetails
+								on r.IdRoom equals resd.IdRoom
+							join res in db.Reservations
+								on resd.IdReservationDetails equals res.IdReservationDetails
+							where (DbFunctions.TruncateTime(res.DateStart) < din.Date 
+									&& DbFunctions.TruncateTime(res.DateEnd) > din.Date)
+								|| (DbFunctions.TruncateTime(res.DateStart) < dout.Date
+									&& DbFunctions.TruncateTime(res.DateEnd) > dout.Date)
+								|| (DbFunctions.TruncateTime(res.DateStart) >= din.Date
+									&& DbFunctions.TruncateTime(res.DateEnd) <= dout.Date)
+							select r.IdRoom;
+			var rooms = from r in db.Rooms
+						where r.IdHotel == idHotel
+						&& !subselect.Contains(r.IdRoom)
+						select r;
+
+			return rooms;
+		}
+
+		// GET: api/Hotel/5/occupied
+		// date format "yyyy-mm-dd"
+		[Route("api/Hotel/{IdHotel}/occupied/{din}/{dout}")]
+		[ResponseType(typeof(Room))]
+		public IEnumerable<Room> GetOccupiedRooms(int idHotel, DateTime din, DateTime dout)
+		{
+			var rooms = from r in db.Rooms
+							join resd in db.ReservationDetails
+								on r.IdRoom equals resd.IdRoom
+							join res in db.Reservations
+								on resd.IdReservationDetails equals res.IdReservationDetails
+							where (DbFunctions.TruncateTime(res.DateStart) < din.Date
+									&& DbFunctions.TruncateTime(res.DateEnd) > din.Date)
+								|| (DbFunctions.TruncateTime(res.DateStart) < dout.Date
+									&& DbFunctions.TruncateTime(res.DateEnd) > dout.Date)
+								|| (DbFunctions.TruncateTime(res.DateStart) >= din.Date
+									&& DbFunctions.TruncateTime(res.DateEnd) <= dout.Date)
+							select r;
+			
 			return rooms;
 		}
 
