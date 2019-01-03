@@ -21,8 +21,8 @@ GetRoom(int id) from RoomsController, EF gets all pics				 public static List<Pi
 
 ReservationDetailsDB
 *******************
-        public static void AddReservationDetails(int idReservation, int idRoom, decimal roomPrice, decimal increase){}
-        public static void RemoveReservationDetails(int idReservation){}
+AddReservationDetails(ReservationDetail reservationDetail) from ReservationDetailsController         public static void AddReservationDetails(int idReservation, int idRoom, decimal roomPrice, decimal increase){}
+RemoveReservationDetails(int id) from ReservationDetailsController									 public static void RemoveReservationDetails(int idReservation){}
 
 ReservationDB
 *************

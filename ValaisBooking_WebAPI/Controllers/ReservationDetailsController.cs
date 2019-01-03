@@ -72,7 +72,7 @@ namespace ValaisBooking_WebAPI.Models
 
         // POST: api/ReservationDetails
         [ResponseType(typeof(ReservationDetail))]
-        public IHttpActionResult PostReservationDetail(ReservationDetail reservationDetail)
+        public IHttpActionResult AddReservationDetails(ReservationDetail reservationDetail)
         {
             if (!ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace ValaisBooking_WebAPI.Models
 
         // DELETE: api/ReservationDetails/5
         [ResponseType(typeof(ReservationDetail))]
-        public IHttpActionResult DeleteReservationDetail(int id)
+        public IHttpActionResult RemoveReservationDetails(int id)
         {
             ReservationDetail reservationDetail = db.ReservationDetails.Find(id);
             if (reservationDetail == null)
