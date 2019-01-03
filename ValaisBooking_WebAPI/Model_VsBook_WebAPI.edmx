@@ -33,7 +33,7 @@
             <PropertyRef Name="IdReservation" />
           </Key>
           <Property Name="IdReservation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdReservationDetails" Type="int" Nullable="false" />
+          <Property Name="IdReservationDetails" Type="int" />
           <Property Name="DateReservation" Type="date" Nullable="false" />
           <Property Name="ClientFirstname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ClientLastname" Type="varchar" MaxLength="50" Nullable="false" />
@@ -47,7 +47,6 @@
             <PropertyRef Name="IdReservationDetails" />
           </Key>
           <Property Name="IdReservationDetails" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdReservation" Type="int" Nullable="false" />
           <Property Name="IdRoom" Type="int" Nullable="false" />
           <Property Name="RoomPrice" Type="numeric" Precision="5" Scale="2" Nullable="false" />
           <Property Name="Increase" Type="numeric" Precision="5" Scale="2" />
@@ -78,7 +77,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reservation_ReservD">
-          <End Role="ReservationDetails" Type="Self.ReservationDetails" Multiplicity="1" />
+          <End Role="ReservationDetails" Type="Self.ReservationDetails" Multiplicity="0..1" />
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ReservationDetails">
@@ -233,7 +232,7 @@
             <PropertyRef Name="IdReservation" />
           </Key>
           <Property Name="IdReservation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdReservationDetails" Type="Int32" Nullable="false" />
+          <Property Name="IdReservationDetails" Type="Int32" />
           <Property Name="DateReservation" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ClientFirstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ClientLastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -248,7 +247,6 @@
             <PropertyRef Name="IdReservationDetails" />
           </Key>
           <Property Name="IdReservationDetails" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdReservation" Type="Int32" Nullable="false" />
           <Property Name="IdRoom" Type="Int32" Nullable="false" />
           <Property Name="RoomPrice" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
           <Property Name="Increase" Type="Decimal" Precision="5" Scale="2" />
@@ -256,7 +254,7 @@
           <NavigationProperty Name="Room" Relationship="ValaisBookingModel.FK_ReservationD_Room" FromRole="ReservationDetail" ToRole="Room" />
         </EntityType>
         <Association Name="FK_Reservation_ReservD">
-          <End Type="ValaisBookingModel.ReservationDetail" Role="ReservationDetail" Multiplicity="1" />
+          <End Type="ValaisBookingModel.ReservationDetail" Role="ReservationDetail" Multiplicity="0..1" />
           <End Type="ValaisBookingModel.Reservation" Role="Reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ReservationDetail">
@@ -345,12 +343,11 @@
                 <ScalarProperty Name="Increase" ColumnName="Increase" />
                 <ScalarProperty Name="RoomPrice" ColumnName="RoomPrice" />
                 <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
-                <ScalarProperty Name="IdReservation" ColumnName="IdReservation" />
                 <ScalarProperty Name="IdReservationDetails" ColumnName="IdReservationDetails" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

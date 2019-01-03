@@ -15,7 +15,7 @@ namespace ValaisBooking_WebAPI
     public partial class Reservation
     {
         public int IdReservation { get; set; }
-        public int IdReservationDetails { get; set; }
+        public Nullable<int> IdReservationDetails { get; set; }
         public System.DateTime DateReservation { get; set; }
         public string ClientFirstname { get; set; }
         public string ClientLastname { get; set; }

@@ -28,7 +28,7 @@
       <PropertyRef Name="IdReservation" />
     </Key>
     <Property Name="IdReservation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdReservationDetails" Type="int" Nullable="false" />
+    <Property Name="IdReservationDetails" Type="int" />
     <Property Name="DateReservation" Type="date" Nullable="false" />
     <Property Name="ClientFirstname" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ClientLastname" Type="varchar" MaxLength="50" Nullable="false" />
@@ -42,7 +42,6 @@
       <PropertyRef Name="IdReservationDetails" />
     </Key>
     <Property Name="IdReservationDetails" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdReservation" Type="int" Nullable="false" />
     <Property Name="IdRoom" Type="int" Nullable="false" />
     <Property Name="RoomPrice" Type="numeric" Precision="5" Scale="2" Nullable="false" />
     <Property Name="Increase" Type="numeric" Precision="5" Scale="2" />
@@ -73,7 +72,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Reservation_ReservD">
-    <End Role="ReservationDetails" Type="Self.ReservationDetails" Multiplicity="1" />
+    <End Role="ReservationDetails" Type="Self.ReservationDetails" Multiplicity="0..1" />
     <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ReservationDetails">

@@ -61,7 +61,6 @@
           <ScalarProperty Name="Increase" ColumnName="Increase" />
           <ScalarProperty Name="RoomPrice" ColumnName="RoomPrice" />
           <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
-          <ScalarProperty Name="IdReservation" ColumnName="IdReservation" />
           <ScalarProperty Name="IdReservationDetails" ColumnName="IdReservationDetails" />
         </MappingFragment>
       </EntityTypeMapping>

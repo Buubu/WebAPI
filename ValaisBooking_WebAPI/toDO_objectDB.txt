@@ -19,6 +19,11 @@ usefull??       													 public static List<Picture> GetAllPictures(int idH
 GetRoom(int id) from RoomsController, EF gets all pics				 public static List<Picture> GetRoomPictures(int idRoom){}
 
 
+ReservationDetailsDB
+*******************
+        public static void AddReservationDetails(int idReservation, int idRoom, decimal roomPrice, decimal increase){}
+        public static void RemoveReservationDetails(int idReservation){}
+
 ReservationDB
 *************
         public static int AddReservation(DateTime dateReservation, string clientFirstname, string clientLastname, DateTime dateStart, DateTime dateEnd, decimal totalPrice){}
@@ -26,7 +31,4 @@ ReservationDB
         public static void RemoveReservation(int idReservation){}
 
 
-ReservationDetailsDB
-*******************
-        public static void AddReservationDetails(int idReservation, int idRoom, decimal roomPrice, decimal increase){}
-        public static void RemoveReservationDetails(int idReservation){}
+

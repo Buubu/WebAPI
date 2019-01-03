@@ -21,7 +21,6 @@ namespace ValaisBooking_WebAPI
         }
     
         public int IdReservationDetails { get; set; }
-        public int IdReservation { get; set; }
         public int IdRoom { get; set; }
         public decimal RoomPrice { get; set; }
         public Nullable<decimal> Increase { get; set; }

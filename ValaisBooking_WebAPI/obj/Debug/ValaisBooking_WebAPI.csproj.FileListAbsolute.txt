@@ -196,8 +196,8 @@ C:\Users\uadmin\source\repos\ValaisBooking_605_3\ValaisBooking_webAPI\ValaisBook
 C:\Users\uadmin\source\repos\ValaisBooking_605_3\ValaisBooking_webAPI\ValaisBooking_WebAPI\bin\System.Web.Http.xml
 C:\Users\uadmin\source\repos\ValaisBooking_605_3\ValaisBooking_webAPI\ValaisBooking_WebAPI\bin\System.Web.Http.WebHost.xml
 C:\Users\uadmin\source\repos\ValaisBooking_605_3\ValaisBooking_webAPI\ValaisBooking_WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\uadmin\source\repos\ValaisBooking_605_3\ValaisBooking_webAPI\ValaisBooking_WebAPI\obj\Debug\ValaisBooking_WebAPI.csprojAssemblyReference.cache
 C:\Users\uadmin\source\repos\ValaisBooking_605_3\ValaisBooking_webAPI\ValaisBooking_WebAPI\obj\Debug\ValaisBooking_WebAPI.csproj.CoreCompileInputs.cache
 C:\Users\uadmin\source\repos\ValaisBooking_605_3\ValaisBooking_webAPI\ValaisBooking_WebAPI\obj\Debug\ValaisBooking_WebAPI.csproj.CopyComplete
 C:\Users\uadmin\source\repos\ValaisBooking_605_3\ValaisBooking_webAPI\ValaisBooking_WebAPI\obj\Debug\ValaisBooking_WebAPI.dll
 C:\Users\uadmin\source\repos\ValaisBooking_605_3\ValaisBooking_webAPI\ValaisBooking_WebAPI\obj\Debug\ValaisBooking_WebAPI.pdb
+C:\Users\uadmin\source\repos\ValaisBooking_605_3\ValaisBooking_webAPI\ValaisBooking_WebAPI\obj\Debug\ValaisBooking_WebAPI.csprojAssemblyReference.cache
