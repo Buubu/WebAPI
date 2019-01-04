@@ -14,19 +14,13 @@ namespace ValaisBooking_WebAPI
     
     public partial class ReservationDetail
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ReservationDetail()
-        {
-            this.Reservations = new HashSet<Reservation>();
-        }
-    
         public int IdReservationDetails { get; set; }
+        public int IdReservation { get; set; }
         public int IdRoom { get; set; }
         public decimal RoomPrice { get; set; }
         public Nullable<decimal> Increase { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reservation> Reservations { get; set; }
+        public virtual Reservation Reservation { get; set; }
         public virtual Room Room { get; set; }
     }
 }

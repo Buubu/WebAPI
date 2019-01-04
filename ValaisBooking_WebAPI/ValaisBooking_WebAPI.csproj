@@ -88,6 +88,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ValaisBooking.mdf" />
+    <Content Include="App_Data\ValaisBooking_log.ldf">
+      <DependentUpon>ValaisBooking.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Model_VsBook_WebAPI.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -100,6 +104,7 @@
       <LastGenOutput>Model_VsBook_WebAPI.cs</LastGenOutput>
     </Content>
     <Content Include="toDO_objectDB.txt" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -152,7 +157,6 @@
       <DependentUpon>Model_VsBook_WebAPI.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
-    <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -160,9 +164,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

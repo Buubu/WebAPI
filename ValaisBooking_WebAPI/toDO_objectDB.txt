@@ -3,7 +3,7 @@ HotelDB
 GetHotels() from HotelsController									public static List<Hotel> GetAllHotels(){}
 GetHotelsSimple(string location) from HotelsController				public static List<Hotel> GetAllHotelsSimple(string location){}
 BLL on GetHotelsSimple(string location) from HotelsController		public static List<Hotel> GetAllHotelsAdvanced(string location, int category, Boolean hasWifi, Boolean hasParking){}
-GetHotels(int id) from HotelsController	*not working*				public static Hotel GetHotel(int idHotel){}
+GetHotels(int id) from HotelsController								public static Hotel GetHotel(int idHotel){}
 
 RoomDB
 ******
@@ -19,16 +19,18 @@ usefull??       													 public static List<Picture> GetAllPictures(int idH
 GetRoom(int id) from RoomsController, EF gets all pics				 public static List<Picture> GetRoomPictures(int idRoom){}
 
 
-ReservationDetailsDB
-*******************
-AddReservationDetails(ReservationDetail reservationDetail) from ReservationDetailsController         public static void AddReservationDetails(int idReservation, int idRoom, decimal roomPrice, decimal increase){}
-RemoveReservationDetails(int id) from ReservationDetailsController									 public static void RemoveReservationDetails(int idReservation){}
-
 ReservationDB
 *************
         public static int AddReservation(DateTime dateReservation, string clientFirstname, string clientLastname, DateTime dateStart, DateTime dateEnd, decimal totalPrice){}
         public static Boolean LoginReservation(int idReservation, string firstname, string lastname){}
         public static void RemoveReservation(int idReservation){}
+
+ReservationDetailsDB
+*******************
+AddReservationDetails(ReservationDetail reservationDetail) from ReservationDetailsController         public static void AddReservationDetails(int idReservation, int idRoom, decimal roomPrice, decimal increase){}
+RemoveReservationDetails(int id) from ReservationDetailsController									 public static void RemoveReservationDetails(int idReservation){}
+
+
 
 
 

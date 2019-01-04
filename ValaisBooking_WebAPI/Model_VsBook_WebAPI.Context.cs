@@ -18,6 +18,7 @@ namespace ValaisBooking_WebAPI
         public ValaisBookingEntities1()
             : base("name=ValaisBookingEntities1")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
