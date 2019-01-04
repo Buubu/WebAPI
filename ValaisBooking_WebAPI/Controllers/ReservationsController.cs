@@ -36,18 +36,18 @@ namespace ValaisBooking_WebAPI.Models
         }
 
 		// GET: api/Reservations/5
-		[ResponseType(typeof(Boolean))]
+		[ResponseType(typeof(String))]
 		[Route ("api/Reservation/LoginValidation/{idReservation}/{firstname}/{lastname}")]
-		public Boolean LoginReservation(int idReservation, string firstname, string lastname)
+		public String LoginReservation(int idReservation, string firstname, string lastname)
 		{
 			var reservation = db.Reservations.Where(r => r.IdReservation == idReservation).Where(r => r.ClientFirstname == firstname).Where(r => r.ClientLastname == lastname);
 
 			if (reservation == null)
 			{
-				return false;
+				return "false";
 			}
 
-			return true;
+			return "true";
 		}
 
 		// PUT: api/Reservations/5
