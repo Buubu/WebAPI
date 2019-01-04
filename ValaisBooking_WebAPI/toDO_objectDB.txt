@@ -15,15 +15,15 @@ GetOccupiedRooms(int idHotel, DateTime din, DateTime dout) from RoomsController	
 
 PictureDB
 *********
-usefull??       													 public static List<Picture> GetAllPictures(int idHotel){}
+a faire      													 public static List<Picture> GetAllPictures(int idHotel){}
 GetRoom(int id) from RoomsController, EF gets all pics				 public static List<Picture> GetRoomPictures(int idRoom){}
 
 
 ReservationDB
 *************
-        public static int AddReservation(DateTime dateReservation, string clientFirstname, string clientLastname, DateTime dateStart, DateTime dateEnd, decimal totalPrice){}
-        public static Boolean LoginReservation(int idReservation, string firstname, string lastname){}
-        public static void RemoveReservation(int idReservation){}
+AddReservation(Reservation reservation) from ReservationController										public static int AddReservation(DateTime dateReservation, string clientFirstname, string clientLastname, DateTime dateStart, DateTime dateEnd, decimal totalPrice){}
+LoginReservation(int idReservation, string firstname, string lastname) from ReservationController       public static Boolean LoginReservation(int idReservation, string firstname, string lastname){}
+DeleteReservation(int id) from ReservationController													public static void RemoveReservation(int idReservation){}
 
 ReservationDetailsDB
 *******************

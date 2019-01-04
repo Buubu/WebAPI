@@ -35,8 +35,23 @@ namespace ValaisBooking_WebAPI.Models
             return Ok(reservation);
         }
 
-        // PUT: api/Reservations/5
-        [ResponseType(typeof(void))]
+		// GET: api/Reservations/5
+		[ResponseType(typeof(Boolean))]
+		[Route ("api/Reservation/LoginValidation/{idReservation}/{firstname}/{lastname}")]
+		public Boolean LoginReservation(int idReservation, string firstname, string lastname)
+		{
+			var reservation = db.Reservations.Where(r => r.IdReservation == idReservation).Where(r => r.ClientFirstname == firstname).Where(r => r.ClientLastname == lastname);
+
+			if (reservation == null)
+			{
+				return false;
+			}
+
+			return true;
+		}
+
+		// PUT: api/Reservations/5
+		[ResponseType(typeof(void))]
         public IHttpActionResult PutReservation(int id, Reservation reservation)
         {
             if (!ModelState.IsValid)
@@ -72,7 +87,7 @@ namespace ValaisBooking_WebAPI.Models
 
         // POST: api/Reservations
         [ResponseType(typeof(Reservation))]
-        public IHttpActionResult PostReservation(Reservation reservation)
+        public IHttpActionResult AddReservation(Reservation reservation)
         {
             if (!ModelState.IsValid)
             {

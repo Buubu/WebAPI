@@ -108,6 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ReservationDetailsController.cs" />
+    <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -116,8 +118,6 @@
     </Compile>
     <Compile Include="Controllers\HotelsController.cs" />
     <Compile Include="Controllers\PicturesController.cs" />
-    <Compile Include="Controllers\ReservationDetailsController.cs" />
-    <Compile Include="Controllers\ReservationsController.cs" />
     <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Model_VsBook_WebAPI.Context.cs">
       <AutoGen>True</AutoGen>
