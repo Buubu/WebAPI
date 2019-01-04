@@ -35,6 +35,7 @@ namespace ValaisBooking_WebAPI.Models
             return Ok(reservation);
         }
 
+
 		// GET: api/Reservations/5
 		[ResponseType(typeof(String))]
 		[Route ("api/Reservation/LoginValidation/{idReservation}/{firstname}/{lastname}")]
