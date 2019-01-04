@@ -35,8 +35,38 @@ namespace ValaisBooking_WebAPI.Models
             return Ok(picture);
         }
 
-        // PUT: api/Pictures/5
-        [ResponseType(typeof(void))]
+		// GET: api/Hotel/{id}/Pictures
+		[ResponseType(typeof(String))]
+		[Route ("api/Hotel/{id}/Pictures")]
+		public IHttpActionResult GetAllPictures(int id)
+		{
+			var Urls = db.Pictures.Where(p => p.Room.IdHotel == id).Select(p => p.Url).ToList().Distinct();
+
+			if (Urls == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(Urls);
+		}
+
+		// GET: api/Room/{id}/Pictures
+		[ResponseType(typeof(Picture))]
+		[Route("api/Room/{id}/Pictures")]
+		public IHttpActionResult GetRoomPictures(int id)
+		{
+			var pictures = db.Pictures.Where(p => p.IdRoom == id);
+
+			if (pictures == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(pictures);
+		}
+
+		// PUT: api/Pictures/5
+		[ResponseType(typeof(void))]
         public IHttpActionResult PutPicture(int id, Picture picture)
         {
             if (!ModelState.IsValid)

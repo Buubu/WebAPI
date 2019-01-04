@@ -15,8 +15,8 @@ GetOccupiedRooms(int idHotel, DateTime din, DateTime dout) from RoomsController	
 
 PictureDB
 *********
-a faire      													 public static List<Picture> GetAllPictures(int idHotel){}
-GetRoom(int id) from RoomsController, EF gets all pics				 public static List<Picture> GetRoomPictures(int idRoom){}
+GetAllPictures(int id) from PictureController						 public static List<Picture> GetAllPictures(int idHotel){}
+GetRoomPictures(int id) from PictureController						 public static List<Picture> GetRoomPictures(int idRoom){}
 
 
 ReservationDB
