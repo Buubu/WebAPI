@@ -33,25 +33,41 @@ namespace ValaisBooking_WebAPI.Models
             }
 
             return Ok(reservation);
-        }
+		}
 
+
+		//// GET: api/Reservations/5
+		//      [HttpGet]
+		//[ResponseType(typeof(String))]
+		//[Route ("api/Reservation/LoginValidation/{idReservation}/{firstname}/{lastname}")]
+		//public String LoginReservation(int idReservation, string firstname, string lastname)
+		//{
+		//          var reservation = db.Reservations.Where(r => r.IdReservation == idReservation
+		//              && r.ClientFirstname == firstname
+		//              && r.ClientLastname == lastname);
+
+		//          if (!reservation.Any())
+		//	{
+		//		return "false";
+		//	}
+
+		//          return "true";                
+		//}
 
 		// GET: api/Reservations/5
-        [HttpGet]
+		[HttpGet]
 		[ResponseType(typeof(String))]
-		[Route ("api/Reservation/LoginValidation/{idReservation}/{firstname}/{lastname}")]
+		[Route("api/Reservation/LoginValidation/{idReservation}/{firstname}/{lastname}")]
 		public String LoginReservation(int idReservation, string firstname, string lastname)
 		{
-            var reservation = db.Reservations.Where(r => r.IdReservation == idReservation
-                && r.ClientFirstname == firstname
-                && r.ClientLastname == lastname);
+			var reservation = db.Reservations.Where(r => r.IdReservation == idReservation).Where(r => r.ClientFirstname == firstname).Where(r => r.ClientLastname == lastname).FirstOrDefault();
 
-            if (!reservation.Any())
+			if (reservation == null)
 			{
 				return "false";
 			}
 
-            return "true";                
+			return "true";
 		}
 
 		// PUT: api/Reservations/5
@@ -104,9 +120,10 @@ namespace ValaisBooking_WebAPI.Models
             return CreatedAtRoute("DefaultApi", new { id = reservation.IdReservation }, reservation);
         }
 
-        // DELETE: api/Reservations/5
-        [ResponseType(typeof(Reservation))]
-        public IHttpActionResult DeleteReservation(int id)
+		// DELETE: api/Reservations/5
+		[HttpDelete]
+		[ResponseType(typeof(Reservation))]
+        public IHttpActionResult RemoveReservation(int id)
         {
             Reservation reservation = db.Reservations.Find(id);
             if (reservation == null)
@@ -114,6 +131,10 @@ namespace ValaisBooking_WebAPI.Models
                 return NotFound();
             }
 
+
+			var resDet = db.ReservationDetails.Where(r => r.IdReservation == id).ToList();
+			foreach (var rd in resDet)
+				db.ReservationDetails.Remove(rd);
             db.Reservations.Remove(reservation);
             db.SaveChanges();
 

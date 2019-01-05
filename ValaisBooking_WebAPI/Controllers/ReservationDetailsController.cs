@@ -86,6 +86,7 @@ namespace ValaisBooking_WebAPI.Models
         }
 
         // DELETE: api/ReservationDetails/5
+		[HttpDelete]
         [ResponseType(typeof(ReservationDetail))]
         public IHttpActionResult RemoveReservationDetails(int id)
         {
