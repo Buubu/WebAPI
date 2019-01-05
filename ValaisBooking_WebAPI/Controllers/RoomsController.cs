@@ -81,7 +81,8 @@ namespace ValaisBooking_WebAPI.Models
 								on r.IdRoom equals resd.IdRoom
 							join res in db.Reservations
 								on resd.IdReservation equals res.IdReservation
-							where (DbFunctions.TruncateTime(res.DateStart) < din.Date
+							where r.IdHotel == idHotel
+								|| (DbFunctions.TruncateTime(res.DateStart) < din.Date
 									&& DbFunctions.TruncateTime(res.DateEnd) > din.Date)
 								|| (DbFunctions.TruncateTime(res.DateStart) < dout.Date
 									&& DbFunctions.TruncateTime(res.DateEnd) > dout.Date)
