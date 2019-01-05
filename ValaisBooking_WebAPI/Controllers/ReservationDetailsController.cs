@@ -72,7 +72,8 @@ namespace ValaisBooking_WebAPI.Models
 
         // POST: api/ReservationDetails
         [ResponseType(typeof(ReservationDetail))]
-        public IHttpActionResult AddReservationDetails(ReservationDetail reservationDetail)
+        [HttpPost]
+        public IHttpActionResult AddReservationDetails([FromBody]ReservationDetail reservationDetail)
         {
             if (!ModelState.IsValid)
             {
