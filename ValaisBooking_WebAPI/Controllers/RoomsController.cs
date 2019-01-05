@@ -82,12 +82,12 @@ namespace ValaisBooking_WebAPI.Models
 							join res in db.Reservations
 								on resd.IdReservation equals res.IdReservation
 							where r.IdHotel == idHotel
-								&& (DbFunctions.TruncateTime(res.DateStart) < din.Date
+								&& ((DbFunctions.TruncateTime(res.DateStart) < din.Date
 									&& DbFunctions.TruncateTime(res.DateEnd) > din.Date)
 								|| (DbFunctions.TruncateTime(res.DateStart) < dout.Date
 									&& DbFunctions.TruncateTime(res.DateEnd) > dout.Date)
 								|| (DbFunctions.TruncateTime(res.DateStart) >= din.Date
-									&& DbFunctions.TruncateTime(res.DateEnd) <= dout.Date)
+									&& DbFunctions.TruncateTime(res.DateEnd) <= dout.Date))
 							select r;
 			
 			return rooms;

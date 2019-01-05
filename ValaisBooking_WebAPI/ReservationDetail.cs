@@ -20,7 +20,7 @@ namespace ValaisBooking_WebAPI
         public decimal RoomPrice { get; set; }
         public Nullable<decimal> Increase { get; set; }
     
-        public virtual Reservation Reservation { get; set; }
-        public virtual Room Room { get; set; }
+        public Reservation Reservation { get; set; }
+        public Room Room { get; set; }
     }
 }

@@ -29,6 +29,6 @@ namespace ValaisBooking_WebAPI
         public decimal TotalPrice { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReservationDetail> ReservationDetails { get; set; }
+        public ICollection<ReservationDetail> ReservationDetails { get; set; }
     }
 }

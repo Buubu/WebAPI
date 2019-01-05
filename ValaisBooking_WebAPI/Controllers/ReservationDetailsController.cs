@@ -91,16 +91,16 @@ namespace ValaisBooking_WebAPI.Models
         // DELETE: api/ReservationDetails/5
 		[HttpDelete]
         [ResponseType(typeof(ReservationDetail))]
-        public IHttpActionResult RemoveReservationDetails(int id)
+        public async Task<IHttpActionResult> RemoveReservationDetails(int id)
         {
-            ReservationDetail reservationDetail = db.ReservationDetails.Find(id);
+            ReservationDetail reservationDetail = await db.ReservationDetails.FindAsync(id);
             if (reservationDetail == null)
             {
                 return NotFound();
             }
 
             db.ReservationDetails.Remove(reservationDetail);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(reservationDetail);
         }
