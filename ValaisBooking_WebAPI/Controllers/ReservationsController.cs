@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ValaisBooking_WebAPI;
@@ -123,9 +124,9 @@ namespace ValaisBooking_WebAPI.Models
 		// DELETE: api/Reservations/5
 		[HttpDelete]
 		[ResponseType(typeof(Reservation))]
-        public IHttpActionResult RemoveReservation(int id)
+        public async Task<IHttpActionResult> RemoveReservation(int id)
         {
-            Reservation reservation = db.Reservations.Find(id);
+            Reservation reservation = await db.Reservations.FindAsync(id);
             if (reservation == null)
             {
                 return NotFound();
@@ -136,7 +137,7 @@ namespace ValaisBooking_WebAPI.Models
 			foreach (var rd in resDet)
 				db.ReservationDetails.Remove(rd);
             db.Reservations.Remove(reservation);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(reservation);
         }
