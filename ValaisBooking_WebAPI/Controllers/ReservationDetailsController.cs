@@ -71,6 +71,7 @@ namespace ValaisBooking_WebAPI.Models
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
         // POST: api/ReservationDetails
         [ResponseType(typeof(ReservationDetail))]
         [HttpPost]
