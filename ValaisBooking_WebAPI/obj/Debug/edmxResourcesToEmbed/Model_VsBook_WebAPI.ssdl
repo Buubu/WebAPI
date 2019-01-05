@@ -34,7 +34,6 @@
     <Property Name="DateStart" Type="date" Nullable="false" />
     <Property Name="DateEnd" Type="date" Nullable="false" />
     <Property Name="TotalPrice" Type="numeric" Precision="7" Scale="2" Nullable="false" />
-    <Property Name="IdRoom" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ReservationDetails">
     <Key>

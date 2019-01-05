@@ -99,7 +99,6 @@
     <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-    <Property Name="IdRoom" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ReservationDetails" Relationship="ValaisBookingModel.FK_ReservationD_Reservation" FromRole="Reservation" ToRole="ReservationDetail" />
   </EntityType>
   <EntityType Name="ReservationDetail">
