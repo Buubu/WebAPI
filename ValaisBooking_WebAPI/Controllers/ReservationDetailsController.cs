@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ValaisBooking_WebAPI;
@@ -73,7 +74,7 @@ namespace ValaisBooking_WebAPI.Models
         // POST: api/ReservationDetails
         [ResponseType(typeof(ReservationDetail))]
         [HttpPost]
-        public IHttpActionResult AddReservationDetails([FromBody]ReservationDetail reservationDetail)
+        public async Task<IHttpActionResult> AddReservationDetails([FromBody]ReservationDetail reservationDetail)
         {
             if (!ModelState.IsValid)
             {
@@ -81,7 +82,7 @@ namespace ValaisBooking_WebAPI.Models
             }
 
             db.ReservationDetails.Add(reservationDetail);
-            db.SaveChanges();
+			await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = reservationDetail.IdReservationDetails }, reservationDetail);
         }
