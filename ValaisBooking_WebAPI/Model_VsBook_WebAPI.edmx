@@ -39,7 +39,6 @@
           <Property Name="DateStart" Type="date" Nullable="false" />
           <Property Name="DateEnd" Type="date" Nullable="false" />
           <Property Name="TotalPrice" Type="numeric" Precision="7" Scale="2" Nullable="false" />
-          <Property Name="IdRoom" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ReservationDetails">
           <Key>
@@ -238,7 +237,6 @@
           <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="IdRoom" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ReservationDetails" Relationship="ValaisBookingModel.FK_ReservationD_Reservation" FromRole="Reservation" ToRole="ReservationDetail" />
         </EntityType>
         <EntityType Name="ReservationDetail">
@@ -325,7 +323,6 @@
           <EntitySetMapping Name="Reservations">
             <EntityTypeMapping TypeName="ValaisBookingModel.Reservation">
               <MappingFragment StoreEntitySet="Reservation">
-                <ScalarProperty Name="IdRoom" ColumnName="IdRoom" />
                 <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
                 <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
                 <ScalarProperty Name="DateStart" ColumnName="DateStart" />

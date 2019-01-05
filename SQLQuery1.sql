@@ -6,7 +6,6 @@
     [DateStart]       DATE           NOT NULL,
     [DateEnd]         DATE           NOT NULL,
     [TotalPrice]      NUMERIC (7, 2) NOT NULL,
-    [IdRoom]          INT            NOT NULL,
     CONSTRAINT [PK_Reservation] PRIMARY KEY CLUSTERED ([IdReservation] ASC)
 );
 
